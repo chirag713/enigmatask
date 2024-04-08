@@ -71,11 +71,10 @@ const Signincomponent = () => {
     }
 
 
-
     return (
         <div>
-            <div className='container grid grid-cols-12'>
-                <div className="  col-span-10 col-start-3  lg:col-span-4 lg:col-start-5  md:col-span-6 md:col-start-4 sm:col-span-8 sm:col-start-3 ">
+            <div className='container grid grid-cols-12 '>
+                <div className="  col-span-10 col-start-2  lg:col-span-4 lg:col-start-5  md:col-span-6 md:col-start-4 sm:col-span-8 sm:col-start-3 ">
                     {/* <div className='my-5 flex justify-center'>
                         <Image src={signupsvg} style={
                             {

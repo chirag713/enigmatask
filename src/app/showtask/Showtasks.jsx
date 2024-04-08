@@ -53,7 +53,7 @@ const Showtasks = () => {
             <div className=" p-4 col-span-10 lg:col-start-2">
                 <h1 className='text-3xl mb-3 text-center font-bold'>Your Questions ({tasks.length})</h1>
                 {tasks.map((task) => (
-                    <Takscomponent task={task} key={task._id} deletetaskparent={deletetaskparent} />
+                    <Takscomponent  task={task} key={task._id} deletetaskparent={deletetaskparent} />
                 ))}
             </div>
         </div>

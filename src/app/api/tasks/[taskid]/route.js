@@ -33,8 +33,8 @@ export async function PUT(request, { params }) {
     try {
 
         const { taskid } = params;
-
-        const { title, content } = await request.json();
+        const { title, content,likecount } = await request.json();
+        console.log(title, content,likecount);
 
         // Find the task by ID
         let task = await Task.findById(taskid);
@@ -51,6 +51,7 @@ export async function PUT(request, { params }) {
         // Update task properties
         task.title = title;
         task.content = content;
+        task.likecount=likecount;
 
         console.log(title , content);
         // Save the updated task to the database

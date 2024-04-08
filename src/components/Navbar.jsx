@@ -72,7 +72,7 @@ export const Navbar = () => {
         >
             <List>
                 {[
-                    { text: "Home", icon: <HomeIcon />, link: "/" },
+                    { text: "Home", icon: <HomeIcon />, link: "/home" },
                     { text: "My Questions", icon: <QuizIcon />, link: "/showtask" },
                     { text: "Add Question", icon: <AddBoxIcon />, link: "/addtask" },
                     { text: "All Questions", icon: <QuestionAnswerIcon />, link: "/showalltasks" },
@@ -155,7 +155,9 @@ export const Navbar = () => {
                 </Box>
 
                 <NavbarLinksBox>
+                <Link href={"/home"}>
                     <NavLink variant="body2">Home</NavLink>
+                    </Link>
                     {
                         context.user && (
                             <>

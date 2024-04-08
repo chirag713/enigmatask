@@ -10,7 +10,7 @@ export function middleware(request) {
 
     let token = request.cookies.get("authToken")?.value;
 
-    if(request.nextUrl.pathname ==="/api/login" || request.nextUrl.pathname==="/api/users"){
+    if(request.nextUrl.pathname ==="/api/login" || request.nextUrl.pathname==="/api/user"){
         return;
     }
 
@@ -48,10 +48,10 @@ export function middleware(request) {
 export const config = {
     matcher: [
         '/addtask',
-        "/",
         "/showtask",
         "/signuppage",
         "/signinpage",
         "/showalltask",
+        "/api/:path*"
     ],
 };

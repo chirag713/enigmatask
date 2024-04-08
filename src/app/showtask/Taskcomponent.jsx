@@ -73,7 +73,7 @@ const Takscomponent = ({ task, deletetaskparent }) => {
     }
 
     return (
-        <div className={` shadow-lg mb-1 rounded `} id={task._id}>
+        <div className={`pl-6 pr-4 shadow-lg mb-1 rounded `} id={task._id}>
             <div className='p-3'>
                 <div className="flex justify-between">
                     <h1 className='text-2xl font-semibold'>{task.title}</h1>
@@ -92,9 +92,9 @@ const Takscomponent = ({ task, deletetaskparent }) => {
                 </div>
                 {/* Render comments if showComments is true */}
                 {showComments && comments.map((comment, index) => (
-                    <div key={index}>
+                    <div key={index} className='bg-gray-100 rounded-lg p-3 mb-2'>
                         {/* Render each comment */}
-                        <p>{comment.content}</p>
+                        <p className='text-black '>{comment.content}</p>
                     </div>
                 ))}
             </div>

@@ -27,5 +27,11 @@ export async function getalltask() {
 }
 
 
+export async function updatetasklike(taskid,data) {
+  console.log(data);
+  const result= await httpaxious.put(`/api/tasks/${taskid}`,data).then((response) => response.data);
+  return result
+}
+
 
 
