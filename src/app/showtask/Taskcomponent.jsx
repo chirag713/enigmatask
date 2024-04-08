@@ -179,7 +179,7 @@ const Takscomponent = ({ task, deletetaskparent }) => {
                                     value={tas.status}>Clear</button>
                             </div>
 
-                            {JSON.stringify(tas)}
+                            {/* {JSON.stringify(tas)} */}
                         </form>
                     </div>
                     : ""}
