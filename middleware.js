@@ -52,5 +52,6 @@ export const config = {
         "/signuppage",
         "/signinpage",
         "/showalltask",
+        "/",
     ],
 };
