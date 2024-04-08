@@ -53,5 +53,6 @@ export const config = {
         "/signinpage",
         "/showalltask",
         "/",
+        "/api/:path*",
     ],
 };
