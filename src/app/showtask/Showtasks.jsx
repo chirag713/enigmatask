@@ -6,10 +6,15 @@ import UserContext from '../context/usercontext';
 import { toast } from 'react-toastify';
 import Takscomponent from './Taskcomponent';
 import { deletetaskcall, gettaskofuser } from '@/services/taskservice';
+import { updatetasklike } from '@/services/taskservice';
+
 
 const Showtasks = () => {
     const context = useContext(UserContext);
     const [tasks, setTasks] = useState([]);
+
+    
+
 
     async function loadtask(userId) {
         console.log(userId);
@@ -48,12 +53,14 @@ const Showtasks = () => {
         }
     }
 
+    
+
     return (
         <div className=' sm:grid sm:grid-cols-12  '>
             <div className=" p-4 col-span-10 lg:col-start-2">
                 <h1 className='text-3xl mb-3 text-center font-bold'>Your Questions ({tasks.length})</h1>
                 {tasks.map((task) => (
-                    <Takscomponent  task={task} key={task._id} deletetaskparent={deletetaskparent} />
+                    <Takscomponent task={task} key={task._id} deletetaskparent={deletetaskparent}  />
                 ))}
             </div>
         </div>

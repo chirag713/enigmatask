@@ -26,3 +26,13 @@ export async function logoutuser() {
   const result = await httpaxious.post("/api/logout").then((response) => response.data);
   return result
 }
+
+
+export async function GLogin(data) {
+  console.log(data.email,data.name);
+  const result = await httpaxious.post("/api/gauth",data).then((response) => response.data);
+  return result
+}
+
+
+

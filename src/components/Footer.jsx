@@ -13,7 +13,7 @@ const Footer = () => {
     const CustomContainer = styled(Container)(({ theme }) => ({
         display: "flex",
         justifyContent: "space-around",
-        gap: theme.spacing(5),
+        gap: theme.spacing(4),
         [theme.breakpoints.down("sm")]: {
             flexDirection: "column",
             textAlign: "center",
@@ -40,7 +40,7 @@ const Footer = () => {
     }));
 
     return (
-        <Box sx={{ py: 10, backgroundColor: "#001f2b" }}>
+        <Box sx={{ py: 4, backgroundColor: "#001f2b" }}>
             <CustomContainer>
                 <CustomContainer>
                     <Box>
@@ -55,7 +55,7 @@ const Footer = () => {
                             Help
                         </Typography>
 
-                        <FooterLink>Track my Music</FooterLink>
+                        <FooterLink>Track your questions</FooterLink>
                         <br />
                         <FooterLink>Community Support</FooterLink>
                         <br />
@@ -73,10 +73,10 @@ const Footer = () => {
                                 mb: 2,
                             }}
                         >
-                            Company
+                            Chirag
                         </Typography>
 
-                        <FooterLink>About Voxturr</FooterLink>
+                        <FooterLink>About</FooterLink>
                         <br />
                         <FooterLink>Terms of use</FooterLink>
                         <br />
@@ -105,7 +105,7 @@ const Footer = () => {
                                 mb: 2,
                             }}
                         >
-                            Get any songs you want at ant time you want.
+                            Join the community
                         </Typography>
 
                         {/* <IconBox>

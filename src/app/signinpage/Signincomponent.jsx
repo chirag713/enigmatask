@@ -1,15 +1,52 @@
 "use client";
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState,useEffect } from 'react'
+import { googleLogout, useGoogleLogin } from "@react-oauth/google";
+import  axios  from 'axios';
 
 // import signupsvg from "../Assets/signup.svg";
 // import Image from 'next/image';
 import { toast } from 'react-toastify';
 
-import { Loginuser, Signupuser } from '@/services/userservice';
+import { GLogin, Loginuser, Signupuser } from '@/services/userservice';
 import { useRouter } from 'next/navigation';
 import UserContext from '../context/usercontext';
 
 const Signincomponent = () => {
+    //
+    const [user, setUser] = useState(null);
+    const [userData,setUserData]=useState(null);
+  const login = useGoogleLogin({
+    onSuccess: (codeResponse) => {
+      setUser(codeResponse);
+      saveUserToDatabase(userData);
+    },
+    onError: (error) => console.log("Login Failed:", error),
+  });
+
+  useEffect(() => {
+    if (user) {
+      axios
+        .get(
+          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
+          {
+            headers: {
+              Authorization: `Bearer ${user.access_token}`,
+              Accept: "application/json",
+            },
+          }
+        )
+        .then((res) => {
+          setUserData(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [user]);
+
+  const saveUserToDatabase = async(userData) => {
+    const result = await GLogin(userData);
+
+  };
+    //
 
     const router=useRouter();
 
@@ -73,6 +110,12 @@ const Signincomponent = () => {
 
     return (
         <div>
+            {/* <div onClick={() => {
+          login();
+        }}
+      >
+         Login with Google
+      </div> */}
             <div className='container grid grid-cols-12 '>
                 <div className="  col-span-10 col-start-2  lg:col-span-4 lg:col-start-5  md:col-span-6 md:col-start-4 sm:col-span-8 sm:col-start-3 ">
                     {/* <div className='my-5 flex justify-center'>
