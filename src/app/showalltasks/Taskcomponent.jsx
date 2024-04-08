@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useContext, useState, useEffect } from 'react';
 import UserContext from '../context/usercontext';
 import { commentadd, getcomment } from '@/services/commentservice';
@@ -19,9 +21,10 @@ const Takscomponent = ({ task, deletetaskparent }) => {
     const [cmt, setCmt] = useState(null);
     const [id, setId] = useState("");
     const [likeCount, setLikeCount] = useState(task.likecount); // State to hold the like count
+    const [showComments, setShowComments] = useState(false); // State to manage the visibility of comments
 
     async function addcomment() {
-        if (data.content == "") {
+        if (data.content === "") {
             toast.warning("Comment cant be empty", { position: "top-center" });
             return;
         }
@@ -40,7 +43,8 @@ const Takscomponent = ({ task, deletetaskparent }) => {
         try {
             const result = await getcomment(task._id);
             console.log(result);
-            setCmt(result);
+            if (result)
+                setCmt(result);
             setId(task._id);
             toast.success("Comment is fetched", { position: "top-center" });
         } catch (error) {
@@ -107,7 +111,7 @@ const Takscomponent = ({ task, deletetaskparent }) => {
                 </div>
                 <p className='font-normal'>{task.content}</p>
                 <div className="flex justify-between mt-3"></div>
-                {cmt && <div>{cmt[0].content}</div>}
+
                 <div className="sm:flex">
                     <textarea rows={4} type="text" placeholder='Enter your comment' className='w-full p-3 rounded-3xl bg-gray-800 text-white ps-5 focus:ring-gray-400 border border-gray-600'
                         onChange={(event) => {
@@ -120,9 +124,17 @@ const Takscomponent = ({ task, deletetaskparent }) => {
                     />
                     <div className="flex flex-col justify-center text-center ps-4 pt-6">
                         <button type='submit' className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 h-10 focus:outline-none dark:focus:ring-blue-800' onClick={addcomment}> Submit </button>
-                        <button type='submit' className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 h-15 focus:outline-none dark:focus:ring-blue-800' onClick={getallcomments} > Show comments </button>
+                        <button type='submit' className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 h-15 focus:outline-none dark:focus:ring-blue-800' onClick={() => { getallcomments(); setShowComments(prevState => !prevState); }}>{showComments ? 'Hide comments' : 'Show comments'}</button>
                     </div>
                 </div>
+                {showComments && cmt && (
+                    <div className='pt-4'>
+                        {cmt.map(comment => (
+                            <div key={comment.id} className='bg-gray-100 rounded-lg p-3 mb-2' ><p className='text-black '>{comment.content} </p></div>
+
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     );

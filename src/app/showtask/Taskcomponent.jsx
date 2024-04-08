@@ -69,7 +69,8 @@ const Takscomponent = ({ task, deletetaskparent }) => {
     async function getallcomments() {
         try {
             const result = await getcomment(task._id);
-            setComments(result);
+            if (result)
+                setComments(result);
             toast.success("Comments are fetched", {
                 position: "top-center",
             });
@@ -185,12 +186,14 @@ const Takscomponent = ({ task, deletetaskparent }) => {
                     : ""}
 
                 {/* Render comments if showComments is true */}
-                {showComments && comments.map((comment, index) => (
-                    <div key={index} className='bg-gray-100 rounded-lg p-3 mb-2'>
-                        {/* Render each comment */}
-                        <p className='text-black '>{comment.content}</p>
-                    </div>
-                ))}
+                <div className='pt-4'>
+                    {showComments && comments.map((comment, index) => (
+                        <div key={index} className='bg-gray-100 rounded-lg p-3 mb-2'>
+                            {/* Render each comment */}
+                            <p className='text-black '>{comment.content}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );

@@ -74,7 +74,7 @@ const addTask = () => {
           }
             alt='login banner image' />
         </div> */}
-                <h1 className='text-3xl text-center '>Add Your task here </h1>
+                <h1 className='text-3xl text-center '>Add Your Question here </h1>
                 <form action="#" className='pb-5' onSubmit={handleaddTask} >
                     <div className="mt-4">
                         <label htmlFor="task_title" className='block mb-2 text-2xl'>Title</label>

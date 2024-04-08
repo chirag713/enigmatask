@@ -51,7 +51,7 @@ const Showtasks = () => {
     return (
         <div className=' sm:grid sm:grid-cols-12  '>
             <div className=" p-4 col-span-10 lg:col-start-2">
-                <h1 className='text-3xl mb-3 text-center font-bold'>All Questionss ({tasks.length})</h1>
+                <h1 className='text-3xl mb-3 text-center font-bold'>All Questions ({tasks.length})</h1>
                 {tasks.map((task,t) => (
                     <Takscomponent task={task} key={task._id} deletetaskparent={deletetaskparent} tree={t}/>
                 ))}
